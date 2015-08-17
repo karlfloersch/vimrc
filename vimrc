@@ -89,6 +89,11 @@ set clipboard=unnamedplus
 
 
 
+" **************  MAP TO OPEN UP NERDTREE  ************** " 
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+
+
 " **************  GREP CURRENT WORD  ************** " 
 nnoremap <leader>* :execute "vimgrep /" . expand("<cword>") . "/j ../../**/*.py" <Bar> cw<CR>
 
