@@ -1,3 +1,9 @@
+" __     ___           
+" \ \   / (_)_ __ ___  
+"  \ \ / /| | '_ ` _ \ 
+"   \ V / | | | | | | |
+"    \_/  |_|_| |_| |_|
+"                      
 " Karl Floersch's VIMRC!  Feel free to use it and give me no credits.
 " !!! MIT MIT MIT MIT MIT MIT !!!
 " I'd use } to navigate this so you can see each option on it's own.
