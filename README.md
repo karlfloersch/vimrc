@@ -10,7 +10,7 @@ well for me at least. If you feel like it, give it a try!
 
 ## Installation
 1. Clone the repo with `git clone https://github.com/karlfloersch/vimrc.git ~/.vim/vimrc` 
-2. Make a symlink to the tmux.conf file with `ln ~/.vim/vimrc/vimrc ~/.vimrc`
+2. Make a symlink to the vimrc file with `ln ~/.vim/vimrc/vimrc ~/.vimrc`
 3. Install Vundle, instructions here: https://github.com/VundleVim/Vundle.vim
 4. Open the .vimrc file with `vim ~/.vimrc` 
 5. If you wnat auto completion, you will need to install YouCompleteMe which requires a
