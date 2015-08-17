@@ -9,7 +9,6 @@ well for me at least. If you feel like it, give it a try!
 - Karl's choices on good settings... if you trust me then this is for you! ;)
 
 ## Installation
-1. Copy the vimrc file into `~/.vimrc`
 1. Clone the repo with `git clone https://github.com/karlfloersch/vimrc.git ~/.vim/vimrc` 
 2. Make a symlink to the tmux.conf file with `ln ~/.vim/vimrc/vimrc ~/.vimrc`
 3. Install Vundle, instructions here: https://github.com/VundleVim/Vundle.vim
