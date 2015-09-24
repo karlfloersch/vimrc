@@ -50,7 +50,10 @@ Plugin 'tpope/vim-surround'
 
 " **************  SYNTAX + COMPLETION  ************** " 
 Plugin 'scrooloose/syntastic'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'Valloric/YouCompleteMe'
+" **************  C LANG COMPLETION  ************** " 
+Plugin 'rdnetto/YCM-Generator'
 
 " **************  FILE OPENING/STUFF  ************** " 
 Plugin 'kien/ctrlp.vim'
@@ -97,6 +100,11 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 " **************  GREP CURRENT WORD  ************** " 
 nnoremap <leader>* :execute "vimgrep /" . expand("<cword>") . "/j ../../**/*.py" <Bar> cw<CR>
 
+
+" **************  SET ESLINT AS SYNTAX CHECKER  ************** " 
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['tsc', 'tslint']
+let g:syntastic_c_checkers = ['cppcheck']
 
 
 " **************  SET COLORSCHEME  ************** " 
