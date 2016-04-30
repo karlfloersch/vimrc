@@ -54,6 +54,8 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'Valloric/YouCompleteMe'
 " **************  C LANG COMPLETION  ************** " 
 Plugin 'rdnetto/YCM-Generator'
+" **************  SOLIDITY SYNTAX  ************** "
+Plugin 'tomlion/vim-solidity'
 
 " **************  FILE OPENING/STUFF  ************** " 
 Plugin 'kien/ctrlp.vim'
@@ -88,7 +90,8 @@ autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <
 
 
 " **************  USE SYSTEM CLIPBOARD  ************** " 
-set clipboard=unnamedplus
+set clipboard=unnamed
+"set clipboard=unnamedplus
 
 
 
