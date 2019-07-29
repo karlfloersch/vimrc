@@ -21,6 +21,7 @@
 
 
 
+
 " **************  REQUIRED  ************** " 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -29,6 +30,8 @@ filetype off                  " required
 
 " &&&**************  MAP LEADER  **************&&& " 
 let mapleader = " "
+
+
 
 
 
@@ -50,12 +53,20 @@ Plugin 'tpope/vim-surround'
 
 " **************  SYNTAX + COMPLETION  ************** " 
 Plugin 'scrooloose/syntastic'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'posva/vim-vue'
 " **************  C LANG COMPLETION  ************** " 
 Plugin 'rdnetto/YCM-Generator'
 " **************  SOLIDITY SYNTAX  ************** "
 Plugin 'tomlion/vim-solidity'
+" **************  PYTHON SYNTAX  ************** "
+" Plugin 'nvie/vim-flake8'
+" **************  TYPESCRIPT SYNTAX  ************** "
+Plugin 'leafgarland/typescript-vim'
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " **************  FILE OPENING/STUFF  ************** " 
 Plugin 'kien/ctrlp.vim'
@@ -70,6 +81,9 @@ Plugin 'flazz/vim-colorschemes'
 " **************  CODE SNIPPETS  ************** " 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+
+" **************  GIT POWERLINE  ************** "
+Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -104,10 +118,17 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 nnoremap <leader>* :execute "vimgrep /" . expand("<cword>") . "/j ../../**/*.py" <Bar> cw<CR>
 
 
-" **************  SET ESLINT AS SYNTAX CHECKER  ************** " 
+" **************  SET ESLINT AS SYNTAX CHECKER  ************** "
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_checkers = ['tsc', 'tslint']
+let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_c_checkers = ['cppcheck']
+let g:syntastic_c_checkers = ['cppcheck']
+let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_python_flake8_post_args='--mypy-config=/Users/karlfloersch/.mypyconfig'
+
+
+" **************  SET ESLINT AS SYNTAX CHECKER  ************** "
+let g:PyFlakeOnWrite = 1
 
 
 " **************  SET COLORSCHEME  ************** " 
@@ -173,10 +194,19 @@ set pastetoggle=<F11>
 
 
 " **************  CHANGE INDENT SETTINGS  ************** " 
-set shiftwidth=2
 set softtabstop=2
 set expandtab
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=2
+" when indenting with '>', use 4 spaces width
+set shiftwidth=2
+" On pressing tab, insert 4 spaces
+set expandtab
 
+
+" **************  INDENT SETTINGS FOR SOLIDITY  ************** "
+autocmd BufRead,BufNewFile   *.sol setlocal ts=4 sts=4 sw=4
 
 
 " **************  USE HARD TABS FOR INDENT  ************** " 
@@ -196,3 +226,36 @@ nnoremap <C-L> :nohl<CR><C-L>
 
 
 "------------------------------------------------------------
+"
+"
+" vvvvvvvvvvvvvvv  PLUG START  vvvvvvvvvvvvvvv "
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+
+" Solidity!
+Plug 'sohkai/syntastic-local-solhint'
+
+Plug 'w0rp/ale'
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\}
+
+" Initialize plugin system
+call plug#end()
+" ^^^^^^^^^^^^^^^  PLUG END  ^^^^^^^^^^^^^^^ "
